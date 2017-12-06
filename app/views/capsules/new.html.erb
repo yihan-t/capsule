@@ -1,0 +1,84 @@
+<!-- Validation failure messages -->
+<% if @capsule.errors.any? %>
+  <% @capsule.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Capsule</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_capsule" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+
+      <!-- Label and input for type -->
+
+        <input type="hidden" id="type" name="type" class="form-control" value="<%= params[:type] %>">
+
+      <!-- Label and input for media -->
+      <div class="form-group">
+        <label for="media" class="control-label">
+          <% if params[:category]=="link" %> 
+            Article link
+          <% else %>
+            Image upload 
+            
+          <% end %>
+        </label>
+
+        <input type="text" id="media" name="media" placeholder="Media" class="form-control" value="<%= @capsule.media %>">
+      </div>
+
+      <!-- Label and input for emotion -->
+      <div class="form-group">
+        <label for="emotion" class="control-label">
+          I feel
+        </label>
+
+        <input type="text" id="emotion" name="emotion" placeholder="Emotion" class="form-control" value="<%= @capsule.emotion %>">
+
+
+      <!-- Label and input for description -->
+
+        <label for="description" class="control-label">
+          because
+        </label>
+        <input type="text" id="description" name="description" placeholder="Description" class="form-control" value="<%= @capsule.description %>">
+      </div>
+
+      
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          What should this capsule be called?
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @capsule.name %>">
+      </div>
+
+
+      <!-- Label and input for owner_id -->
+      <div class="form-group">
+        <label for="owner_id" class="control-label">
+          Owner
+        </label>
+
+        <input type="text" id="owner_id" name="owner_id" placeholder="Owner" class="form-control" value="<%= @capsule.owner_id %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Capsule
+      </button>
+      or
+      <a href="/capsules">Cancel</a>
+    </form>
+  </div>
+</div>

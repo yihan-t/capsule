@@ -1,0 +1,34 @@
+<div class="page-header">
+  <h1>
+    Sent capsules
+    <a href="/sent_capsules/new" class="btn btn-lg btn-success">New Sent capsule</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Capsule</th>
+        <th>Recipient type</th>
+        <th>Ind recipient</th>
+        <th>Group recipient</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @sent_capsules.each do |sent_capsule| %>
+      <tr>
+        <td><%= sent_capsule.capsule_id %></td>
+        <td><%= sent_capsule.recipient_type %></td>
+        <td><%= sent_capsule.ind_recipient_id %></td>
+        <td><%= sent_capsule.group_recipient_id %></td>
+        <td>
+          <a href="/sent_capsules/<%= sent_capsule.id %>" class="btn btn-primary">Show</a>
+          <a href="/sent_capsules/<%= sent_capsule.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_sent_capsule/<%= sent_capsule.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

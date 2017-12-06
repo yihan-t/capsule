@@ -1,0 +1,64 @@
+<!-- Validation failure messages -->
+<% if @sent_capsule.errors.any? %>
+  <% @sent_capsule.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Sent Capsule #<%= @sent_capsule.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_sent_capsule/<%= @sent_capsule.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for capsule_id -->
+      <div class="form-group">
+        <label for="capsule_id" class="control-label">
+          Capsule
+        </label>
+
+        <input type="text" id="capsule_id" name="capsule_id" placeholder="Capsule" class="form-control" value="<%= @sent_capsule.capsule_id %>">
+      </div>
+
+      <!-- Label and input for recipient_type -->
+      <div class="form-group">
+        <label for="recipient_type" class="control-label">
+          Recipient type
+        </label>
+
+        <input type="text" id="recipient_type" name="recipient_type" placeholder="Recipient type" class="form-control" value="<%= @sent_capsule.recipient_type %>">
+      </div>
+
+      <!-- Label and input for ind_recipient_id -->
+      <div class="form-group">
+        <label for="ind_recipient_id" class="control-label">
+          Ind recipient
+        </label>
+
+        <input type="text" id="ind_recipient_id" name="ind_recipient_id" placeholder="Ind recipient" class="form-control" value="<%= @sent_capsule.ind_recipient_id %>">
+      </div>
+
+      <!-- Label and input for group_recipient_id -->
+      <div class="form-group">
+        <label for="group_recipient_id" class="control-label">
+          Group recipient
+        </label>
+
+        <input type="text" id="group_recipient_id" name="group_recipient_id" placeholder="Group recipient" class="form-control" value="<%= @sent_capsule.group_recipient_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Sent Capsule
+      </button>
+      or
+      <a href="/sent_capsules/<%= @sent_capsule.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

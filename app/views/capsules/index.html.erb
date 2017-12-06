@@ -1,0 +1,38 @@
+<div class="page-header">
+  <h1>
+    Capsules
+    <a href="/capsules/new" class="btn btn-lg btn-success">New Capsule</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Media</th>
+        <th>Emotion</th>
+        <th>Description</th>
+        <th>Owner</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @capsules.each do |capsule| %>
+      <tr>
+        <td><%= capsule.name %></td>
+        <td><%= capsule.type %></td>
+        <td><%= capsule.media %></td>
+        <td><%= capsule.emotion %></td>
+        <td><%= capsule.description %></td>
+        <td><%= capsule.owner_id %></td>
+        <td>
+          <a href="/capsules/<%= capsule.id %>" class="btn btn-primary">Show</a>
+          <a href="/capsules/<%= capsule.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_capsule/<%= capsule.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

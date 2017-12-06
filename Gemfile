@@ -6,6 +6,9 @@ git_source(:github) do |repo_name|
 end
 
 
+gem "starter_generators", :git => "https://github.com/raghubetina/starter_generators"
+gem 'carrierwave'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record
